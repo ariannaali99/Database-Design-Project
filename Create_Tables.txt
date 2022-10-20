@@ -1,0 +1,22 @@
+#Enter the following commands separately into postgre after making a database for the project
+
+CREATE TABLE USER(UserID INT PRIMARY KEY,
+			Username VARCHAR(20), 
+			Pword BYTEA,
+			DisplayName VARCHAR(30),
+			Country VARCHAR(20),
+			DateOfBirth DATE);
+
+CREATE TABLE ARTIST(ArtistID INT PRIMARY KEY, 
+			  Name VARCHAR(20),
+			  MonthlyListeners INT);
+
+CREATE TABLE SONG(SongID INT PRIMARY KEY,
+			Title VARCHAR(20),
+			ReleaseDate DATE,
+                  Listens INT, 
+	 	      Artist REFERENCES ARTIST ON DELETE CASCADE);
+
+CREATE TABLE PLAYLIST(PlaylistID INT PRIMARY KEY, 
+			    Title VARCHAR(25),
+			    Length INT);
